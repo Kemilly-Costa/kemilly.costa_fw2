@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./modulos/footer";
 import Menu from "./modulos/navbar";
 import { Container } from "react-bootstrap";
 export default function Promessa() {
 const [pao, setpao] = useState("")
-    setTimeout(() => {
-        document.title = "Promessa é dívida";
-        setpao("é dívida");
-    }, 4000);
+    useEffect(() => {
+        setTimeout(async() => {
+            document.title = "Promessa é dívida";
+            const espera = await mudaPao('é uma divida');
+            setpao(espera);
+         }, 3000);
+    });
+
     return <>
         <Menu />
         <Container>
-            Promessa {pao==="" ? <img src="./loading.gif" width={60} height={20}/> : pao}
+            Promessa {pao==="" ? <img src="./loading.gif" width={60} height={30}/> : pao}
         </Container>
         <Footer />
     </>
 }
+function mudaPao(texto){
+    return new Promise ((resolva)=> 
+        setTimeout(() => { 
+        resolva(texto)
+    }, 1000));
+};
