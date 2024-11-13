@@ -6,7 +6,7 @@ export default function Index() {
   return <div>
     <Menu />
     <Container>
-      Bem Vindos a disciplina 
+      Bem Vindos ao App!!!
     </Container>
     <Footer />
   </div>;
